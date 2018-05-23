@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Operaciones locas</title>
+    <style>
+        body {
+            transition: all 5s;
+        }
+    </style>
+
+    <script>
+        window.addEventListener("load", comparar_numeros);
+        var pagina = {
+            numero_mayor: "no se sabe",
+            color_fondo: "rojo",
+            mostrar_numero: function() {
+                alert(pagina.numero_mayor);
+            },
+            mostrar_color: function() {
+                alert(pagina.color_fondo);
+            }
+        };
+
+
+        function comparar_numeros() {
+
+
+            var botton = document.getElementById("calcular");
+            botton.addEventListener("click", function() {
+                var n1 = parseInt(document.getElementById("n1").value);
+                var n2 = parseInt(document.getElementById("n2").value);
+                var n3 = parseInt(document.getElementById("n3").value);
+                var resultado = document.getElementById("resultado");
+                var mayor;
+
+                if ((n1 > n2) && (n1 > n3)) {
+                    mayor = "el numero mayor es 1";
+                }
+                if ((n2 > n3) && (n2 > n1)) {
+                    mayor = "el numero mayor es 2";
+                }
+                if ((n3 > n1) && (n3 > n2)) {
+                    mayor = "el numero mayor es 3";
+                }
+                pagina.numero_mayor = mayor;
+                resultado.innerHTML = mayor;
+                console.log(mayor);
+
+            });
+
+            var listaColores = document.getElementById("listaColores");
+            document.body.style.backgroundColor = listaColores.value;
+
+            listaColores.addEventListener("change", function() {
+                pagina.color_fondo = listaColores.value;
+                document.body.style.backgroundColor = listaColores.value;
+            });
+        }
+    </script>
+</head>
+
+<body>
+    <div>
+        <label for="">Numero 1</label>
+        <input type="number" id="n1" value="9">
+    </div>
+    <div>
+        <label for="">Numero 2</label>
+        <input type="number" id="n2" value="5">
+    </div>
+    <div>
+        <label for="">Numero 3</label>
+        <input type="number" id="n3" value="2">
+    </div>
+    <div>
+        <p id="resultado">Resultado total:</p>
+    </div>
+
+    <button id="calcular">Dame el numero mayor</button>
+
+    <div>
+        <select id="listaColores">
+            <option value="#fd1f1f">Rojo</option>
+            <option value="#4277dc">Azul</option>
+            <option value="#dc8a42">Naranja</option>
+            <option value="#434343">Verde</option>
+        </select>
+    </div>
+
+</body>
+
+</html>
